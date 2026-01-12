@@ -34,17 +34,17 @@ export const Settings = ({modeTimes, onChange, onClose}) => {
                 <div>
                     <div>
                         <label>pomodoro </label>
-                        <input type="number" value={Math.floor(localTimes.pomodoro / 60)} onChange={(e) => handleInput("pomodoro", e.target.value)}/>
+                        <input type="number" value={Math.floor(localTimes.pomodoro / 60)} min={1} onChange={(e) => handleInput("pomodoro", e.target.value)}/>
                     </div>
 
                     <div>
                         <label>short break </label>
-                        <input type="number" value={Math.floor(localTimes.short / 60)} onChange={(e) => handleInput("short", e.target.value)}/>
+                        <input type="number" value={Math.floor(localTimes.short / 60)} min={1} onChange={(e) => handleInput("short", e.target.value)}/>
                     </div>
 
                     <div>
                         <label>long </label>
-                        <input type="number" value={Math.floor(localTimes.long / 60)} onChange={(e) => handleInput("long", e.target.value)}/>
+                        <input type="number" value={Math.floor(localTimes.long / 60)} min={1} onChange={(e) => handleInput("long", e.target.value)}/>
                     </div>
                 </div>
             </div>

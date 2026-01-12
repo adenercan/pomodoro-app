@@ -59,14 +59,15 @@ function App() {
   useEffect(() => {
     setTime(modeTimes[mode]);
   }, [modeTimes, mode]);
-  
+
   return (
     <>
     <div className="flex flex-col justify-center">
+      <h1 className="flex justify-center font-bold">pomodoro</h1>
       <ModeSelector mode={mode} onModeChange={handleModeChange}/>
       <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/>
       <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart}/>
-      <div>
+      <div className="flex justify-center">
         <button onClick={() => setShowSettings(prev => !prev)}>Settings</button>
       </div>
       {showSettings && (
