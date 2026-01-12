@@ -9,6 +9,9 @@ function App() {
   const handleStart = () => {
     setIsRunning(true);
   }
+  const handlePause = () => {
+    setIsRunning(false);
+  }
 
   useEffect(() => {
     if(!isRunning) return;
@@ -25,7 +28,7 @@ function App() {
     <div className="flex flex-col justify-center">
       <ModeSelector />
       <TimerDisplay time={time}/>
-      <Controls onStart={handleStart}/>
+      <Controls onStart={handleStart} onPause={handlePause}/>
     </div>
     </>
   )
