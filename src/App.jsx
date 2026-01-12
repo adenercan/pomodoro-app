@@ -12,7 +12,10 @@ function App() {
   const handlePause = () => {
     setIsRunning(false);
   }
-
+  const handleReset = () => {
+    setTime(25 * 60);
+    setIsRunning(false);
+  }
   useEffect(() => {
     if(!isRunning) return;
 
@@ -28,7 +31,7 @@ function App() {
     <div className="flex flex-col justify-center">
       <ModeSelector />
       <TimerDisplay time={time}/>
-      <Controls onStart={handleStart} onPause={handlePause}/>
+      <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset}/>
     </div>
     </>
   )
