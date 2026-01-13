@@ -59,9 +59,9 @@ function App() {
         if(prevTime <= 1){
           setIsRunning(false);
 
-          const audio = new Audio("/timer-alarm.mp3");
+          const audio = new Audio("/timer-alarm.MP3");
           audio.play();
-          
+
           return 0;
         }
         return prevTime - 1;
