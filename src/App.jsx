@@ -72,24 +72,29 @@ function App() {
   }, [modeTimes, mode]);
 
   return (
-    <div className={`min-h-screen flex flex-col justify-center bg-background ${currentFont}`}>
-      <h1 className="flex justify-center font-bold text-lilac">pomodoro</h1>
-      <ModeSelector mode={mode} onModeChange={handleModeChange} currentColor={currentColor}/>
-      
-      <div className="w-[268px] h-[268px] bg-navy rounded-full flex flex-col items-center justify-center z-10">
-        <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/> 
-        <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart} isRunning={isRunning} time={time} currentColor={currentColor}/>
-      </div>
+    <div className={`min-h-screen flex flex-col justify-center items-center bg-background ${currentFont}`}>
+      <div className="flex flex-col items-center justify-between w-full gap-12">
 
-      <div className="flex justify-center">
-        <button onClick={() => setShowSettings(prev => !prev)}>
-          <img src="/settings-icon.svg" alt="settings" />
-        </button>
-      </div>
+        <div className="flex flex-col items-center w-full gap-4">
+          <h1 className="flex justify-center font-bold text-lilac mb-7 text-[24px] md:text-[32px]">pomodoro</h1>
+          <ModeSelector mode={mode} onModeChange={handleModeChange} currentColor={currentColor}/>
+        </div>
+        
+        <div className="w-[300px] h-[300px] bg-navy rounded-full flex flex-col items-center justify-center z-10 md:w-[410px] md:h-[410px]">
+          <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/> 
+          <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart} isRunning={isRunning} time={time} currentColor={currentColor}/>
+        </div>
 
-      {showSettings && (
-        <Settings modeTimes={modeTimes} onChange={(newTimes) => setModeTimes(newTimes)} onClose={() => setShowSettings(false)} currentColor={currentColor} currentFont={currentFont} onApply={handleSettingsApply}/>
-      )}
+        <div className="flex flex-col items-center w-full gap-8">
+          <button onClick={() => setShowSettings(prev => !prev)} className="cursor-pointer">
+            <img src="/settings-icon.svg" alt="settings" />
+          </button>
+
+          {showSettings && (
+            <Settings modeTimes={modeTimes} onChange={(newTimes) => setModeTimes(newTimes)} onClose={() => setShowSettings(false)} currentColor={currentColor} currentFont={currentFont} onApply={handleSettingsApply}/>
+          )}
+        </div>
+      </div>
     </div>
   )
 };

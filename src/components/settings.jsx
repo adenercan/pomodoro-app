@@ -34,11 +34,11 @@ export const Settings = ({modeTimes, onApply, onClose, currentFont, currentColor
     ];
 
     return (
-        <div className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4 ${currentFont}`}>
+        <div className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4 sm:px-8 ${currentFont}`}>
             <div className="bg-white rounded-[25px] w-full max-w-[400px] md:max-w-[540px] relative flex flex-col">
                 <div className="flex justify-between items-center p-6 border-b border-gray-200">
                     <h2 className="text-[28px] font-bold text-navy">Settings</h2>   
-                    <button onClick={handleCancel} className="text-navy opacity-60 ohver:opacity-100">
+                    <button onClick={handleCancel} className="text-navy opacity-60 ohver:opacity-100 cursor-pointer">
                         <img src="/cancel-icon.svg" alt="" className="w-[14px] h-[14px]" />
                     </button>
                 </div>
@@ -60,27 +60,27 @@ export const Settings = ({modeTimes, onApply, onClose, currentFont, currentColor
 
                 <hr  className="text-gray"/>
 
-                <div className="flex items-center justify-between p-6 space-y-6 ">
-                    <h3 className="text-[13px] tracking-[5px] font-bold text-navy">FONT</h3>
-                    <div className="flex gap-4">
-                        <button onClick={() => setLocalFont("font-kumbh")} className={`w-10 h-10 rounded-full font-kumbh font-bold flex items-center justify-center transition-all ${localFont === 'font-kumbh' ? 'bg-navy text-white' : 'bg-gray text-navy'}`}>Aa</button>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between p-6 gap-6">
+                    <h3 className="text-[13px] tracking-[5px] font-bold text-navy whitespace-nowrap text-center md:text-left">FONT</h3>
+                    <div className="flex gap-4 justify-center md:justify-start">
+                        <button onClick={() => setLocalFont("font-kumbh")} className={`w-10 h-10 rounded-full font-kumbh font-bold flex items-center justify-center transition-all cursor-pointer ${localFont === 'font-kumbh' ? 'bg-navy text-white' : 'bg-gray text-navy'}`}>Aa</button>
                         <button 
                              onClick={() => setLocalFont("font-roboto")}
-                             className={`w-10 h-10 rounded-full font-roboto font-bold flex items-center justify-center transition-all ${localFont === 'font-roboto' ? 'bg-navy text-white' : 'bg-gray text-navy'}`}>Aa</button>
-                        <button onClick={() => setLocalFont("font-mono")} className={`w-10 h-10 rounded-full font-mono font-bold flex items-center justify-center transition-all ${localFont === 'font-mono' ? 'bg-navy text-white' : 'bg-gray text-navy'}`}>Aa</button>
+                             className={`w-10 h-10 rounded-full font-roboto font-bold flex items-center justify-center transition-all cursor-pointer ${localFont === 'font-roboto' ? 'bg-navy text-white' : 'bg-gray text-navy'}`}>Aa</button>
+                        <button onClick={() => setLocalFont("font-mono")} className={`w-10 h-10 rounded-full font-mono font-bold flex items-center justify-center transition-all cursor-pointer ${localFont === 'font-mono' ? 'bg-navy text-white' : 'bg-gray text-navy'}`}>Aa</button>
                     </div>
                 </div>
 
                 <hr  className="text-gray"/>
 
-                <div className="flex items-center justify-between p-6 space-y-6 mb-8">
-                        <h3 className="text-[13px] tracking-[5px] font-bold text-navy">COLOR</h3>
-                        <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between p-6 gap-6 mb-8">
+                        <h3 className="text-[13px] tracking-[5px] font-bold text-navy whitespace-nowrap text-center md:text-left">COLOR</h3>
+                        <div className="flex gap-4 justify-center md:justify-start">
                             {["red", "cyan", "purple"].map((color) => (
                                 <button
                                     key={color}
                                     onClick={() => setLocalColor(color)}
-                                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${colors[color]} ${localColor === color ? 'ring-2 ring-offset-2 ring-navy' : ''}`}
+                                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all cursor-pointer ${colors[color]} ${localColor === color ? 'ring-2 ring-offset-2 ring-navy' : ''}`}
                                 >
                                     {localColor === color && (
                                         <div className="bg-localColor w-[15px] h-[15px]"></div>
@@ -93,7 +93,7 @@ export const Settings = ({modeTimes, onApply, onClose, currentFont, currentColor
                 <div className="absolute -bottom-6 left-0 right-0 flex justify-center">
                     <button 
                         onClick={handleApplyClick}
-                        className={`px-12 py-4 rounded-[26px] text-white font-bold text-base transition-colors hover:brightness-110 bg-${localColor}`}
+                        className={`px-12 py-4 rounded-[26px] text-white font-bold text-base transition-colors hover:brightness-110 cursor-pointer bg-${localColor}`}
                     >
                         Apply
                     </button>
