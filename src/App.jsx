@@ -66,7 +66,7 @@ function App() {
       <h1 className="flex justify-center font-bold">pomodoro</h1>
       <ModeSelector mode={mode} onModeChange={handleModeChange}/>
       <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/>
-      <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart}/>
+      <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart} isRunning={isRunning} time={time}/>
       <div className="flex justify-center">
         <button onClick={() => setShowSettings(prev => !prev)}>Settings</button>
       </div>

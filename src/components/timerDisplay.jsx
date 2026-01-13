@@ -6,7 +6,7 @@ export const TimerDisplay = ({time}) => {
     const seconds = time % 60;
 
     return (
-        <div className="text-6xl text-center">
+        <div className="text-[80px] text-center">
             {minutes}:{seconds.toString().padStart(2,"0")}
         </div>
     )
