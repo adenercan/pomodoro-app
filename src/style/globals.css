@@ -1,2 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #1E213F;
+  --color-red: #F87070;
+  --color-cyan: #70F3F8;
+  --color-purple: #D881F8;
+  --color-white: #FFFFFF;
+  --color-gray: #EFF1FA;
+  --color-navy: #161932;
+  --color-dark: #2E325A;
+
+  --font-family-kumbh: "Kumbh Sans", sans-serif;
+  --font-family-roboto: "Roboto Slab", serif;
+  --font-family-mono: "Space Mono", monospace;
+}
+
