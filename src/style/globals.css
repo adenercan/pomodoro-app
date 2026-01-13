@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -8,10 +9,10 @@
   --color-white: #FFFFFF;
   --color-gray: #EFF1FA;
   --color-navy: #161932;
-  --color-dark: #2E325A;
+  --color-lilac: #D7E0FF;
 
-  --font-family-kumbh: "Kumbh Sans", sans-serif;
-  --font-family-roboto: "Roboto Slab", serif;
-  --font-family-mono: "Space Mono", monospace;
+  --font-kumbh: "Kumbh Sans", sans-serif;
+  --font-roboto: "Roboto Slab", serif;
+  --font-mono: "Space Mono", monospace;
 }
 

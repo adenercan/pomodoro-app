@@ -40,6 +40,17 @@ function App() {
 
   const [showSettings, setShowSettings] = useState(false);
 
+  const [currentFont, setCurrentFont] = useState("font-kumbh");
+
+  const [currentColor, setCurrentColor] = useState("red");
+
+  const handleSettingsApply = (newTimes, newFont, newColor) => {
+    setModeTimes(newTimes);
+    setCurrentColor(newColor);
+    setCurrentFont(newFont);
+    setShowSettings(false);
+  };
+
   useEffect(() => {
     if(!isRunning) return;
 
@@ -61,20 +72,25 @@ function App() {
   }, [modeTimes, mode]);
 
   return (
-    <>
-    <div className="flex flex-col justify-center">
-      <h1 className="flex justify-center font-bold">pomodoro</h1>
-      <ModeSelector mode={mode} onModeChange={handleModeChange}/>
-      <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/>
-      <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart} isRunning={isRunning} time={time}/>
-      <div className="flex justify-center">
-        <button onClick={() => setShowSettings(prev => !prev)}>Settings</button>
+    <div className={`min-h-screen flex flex-col justify-center bg-background ${currentFont}`}>
+      <h1 className="flex justify-center font-bold text-lilac">pomodoro</h1>
+      <ModeSelector mode={mode} onModeChange={handleModeChange} currentColor={currentColor}/>
+      
+      <div className="w-[268px] h-[268px] bg-navy rounded-full flex flex-col items-center justify-center z-10">
+        <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/> 
+        <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart} isRunning={isRunning} time={time} currentColor={currentColor}/>
       </div>
+
+      <div className="flex justify-center">
+        <button onClick={() => setShowSettings(prev => !prev)}>
+          <img src="/settings-icon.svg" alt="settings" />
+        </button>
+      </div>
+
       {showSettings && (
-        <Settings modeTimes={modeTimes} onChange={(newTimes) => setModeTimes(newTimes)} onClose={() => setShowSettings(false)}/>
+        <Settings modeTimes={modeTimes} onChange={(newTimes) => setModeTimes(newTimes)} onClose={() => setShowSettings(false)} currentColor={currentColor} currentFont={currentFont} onApply={handleSettingsApply}/>
       )}
     </div>
-    </>
   )
 };
 
