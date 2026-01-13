@@ -40,6 +40,17 @@ function App() {
 
   const [showSettings, setShowSettings] = useState(false);
 
+  const [currentFont, setCurrentFont] = useState("font-kumbh");
+
+  const [currentColor, setCurrentColor] = useState("red");
+
+  const handleSettingsApply = (newTimes, newFont, newColor) => {
+    setModeTimes(newTimes);
+    setCurrentColor(newColor);
+    setCurrentFont(newFont);
+    setShowSettings(false);
+  };
+
   useEffect(() => {
     if(!isRunning) return;
 
@@ -61,20 +72,30 @@ function App() {
   }, [modeTimes, mode]);
 
   return (
-    <>
-    <div className="flex flex-col justify-center">
-      <h1 className="flex justify-center font-bold">pomodoro</h1>
-      <ModeSelector mode={mode} onModeChange={handleModeChange}/>
-      <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/>
-      <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart}/>
-      <div className="flex justify-center">
-        <button onClick={() => setShowSettings(prev => !prev)}>Settings</button>
+    <div className={`min-h-screen flex flex-col justify-center items-center bg-background ${currentFont}`}>
+      <div className="flex flex-col items-center justify-between w-full gap-12">
+
+        <div className="flex flex-col items-center w-full gap-4">
+          <h1 className="flex justify-center font-bold text-lilac mb-7 text-[24px] md:text-[32px]">pomodoro</h1>
+          <ModeSelector mode={mode} onModeChange={handleModeChange} currentColor={currentColor}/>
+        </div>
+        
+        <div className="w-[300px] h-[300px] bg-navy rounded-full flex flex-col items-center justify-center z-10 md:w-[410px] md:h-[410px]">
+          <TimerDisplay time={time} onChange={() => setTime(modeTimes)}/> 
+          <Controls onStart={handleStart} onPause={handlePause} onReset={handleReset} onRestart={handleRestart} isRunning={isRunning} time={time} currentColor={currentColor}/>
+        </div>
+
+        <div className="flex flex-col items-center w-full gap-8">
+          <button onClick={() => setShowSettings(prev => !prev)} className="cursor-pointer">
+            <img src="/settings-icon.svg" alt="settings" />
+          </button>
+
+          {showSettings && (
+            <Settings modeTimes={modeTimes} onChange={(newTimes) => setModeTimes(newTimes)} onClose={() => setShowSettings(false)} currentColor={currentColor} currentFont={currentFont} onApply={handleSettingsApply}/>
+          )}
+        </div>
       </div>
-      {showSettings && (
-        <Settings modeTimes={modeTimes} onChange={(newTimes) => setModeTimes(newTimes)} onClose={() => setShowSettings(false)}/>
-      )}
     </div>
-    </>
   )
 };
 
